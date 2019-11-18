@@ -1,0 +1,39 @@
+{
+  "cursos": [
+    {
+      "id": 1,
+      "nome": "TypeScript"
+    },
+    {
+      "id": 2,
+      "nome": "Angular"
+    },
+    {
+      "id": 3,
+      "nome": "HTML e CSS"
+    },
+    {
+      "id": 4,
+      "nome": "Angular CLI"
+    },
+    {
+      "id": 5,
+      "nome": "Angular"
+    }
+  ],
+
+  "professor": [
+    {
+      "cod":"1",
+      "nome":"Yuri",
+      "senha":"password"
+    },
+    {
+      "cod":"2",
+      "nome":"Gabriel",
+      "senha":"123"
+    }
+  ]
+}
+
+

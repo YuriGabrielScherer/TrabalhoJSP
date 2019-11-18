@@ -1,0 +1,6 @@
+/* O ~ referencia o node_modules */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.pontilhado{
+  border: 1px dotted black!important;
+}

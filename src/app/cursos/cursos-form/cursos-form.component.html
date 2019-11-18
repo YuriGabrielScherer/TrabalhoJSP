@@ -1,0 +1,36 @@
+<!-- Fazendo ligacao desse Form com o form do componente -->
+<form class="needs-validation form" novalidate [formGroup]="form">
+  <div class="form-row">
+    <div class="col-sm-12">
+      <label for="nome">Nome do Curso</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        placeholder="Curso"
+        formControlName="nome"
+        [ngClass]="{'is-invalid' : submitted && hasError('nome')}"
+      />
+
+      <!-- FormControlName faz referencia com o nome criado no Componente -->
+      <!-- ngClass -> Add Classe se tiver erro, usando o metodo hasError() -->
+
+      <!-- O ngIf nos seguintes casos verifica os erros de acordo com as validacoes feitas no componente -->
+      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+        Por favor, insira um nome para o curso.
+      </div>
+
+      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['minlength']">
+        Nome precisa ter, no mínimo, {{ hasError('nome')['minlength'].requiredLength }} caracteres.
+      </div>
+
+      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['maxlength']">
+        O nome não pode ultrapassar {{ hasError('nome')['maxlength'].requiredLength }} caracteres.
+      </div>
+    </div>
+    <div class="divButtons">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+      <button class="btn btn-default" (click)="onCancel()">Cancelar</button>
+    </div>
+  </div>
+</form>

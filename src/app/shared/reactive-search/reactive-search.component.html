@@ -1,0 +1,42 @@
+<div class="container">
+  <!-- Div com input e bottao -->
+  <div class="search-box">
+    <div class="row">
+      <div class="col-md-6">
+        <input
+          type="text"
+          id="myInput"
+          class="form-control"
+          [formControl]="queryField"
+          placeholder="Pesquisar"
+        />
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-success" (click)="onSearch()">
+          Pesquisar
+        </button>
+      </div>
+      <div class="col-md-3 contRegistros ">
+        <h5>{{ total }} Registros encontrados.</h5>
+      </div>
+    </div>
+  </div>
+
+  <!-- Div  -->
+  <div class="search-list">
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Versão</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let result of results$ | async">
+          <td>{{ result.name }}</td>
+          <td>{{ result.version }}</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+</div>

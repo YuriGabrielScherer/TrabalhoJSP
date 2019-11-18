@@ -1,0 +1,94 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="float-left">
+      Cursos
+    </h3>
+    <button
+      class="btnNovoCurso float-right btn btn-outline-secondary"
+      type="button"
+      (click)="onRefresh()"
+    >
+      Atualizar
+    </button>
+
+    <button
+      class="btnNovoCurso float-right btn btn-outline-primary"
+      type="button"
+      [routerLink]="['novo']"
+    >
+      Novo Curso
+    </button>
+  </div>
+
+  <!-- Tabela de Retornos do Banco de Cursos -->
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="cursos as cursos; else loading">
+      <!-- Cursos$ é um observable, ou seja, faz conexao com o banco
+          para nao fazer mais de uma requisicao, chamei o Observable e criei uma variavel
+          local chamada cursos que vai ser usada depois no ngFor.
+        -->
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Curso</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of cursos">
+          <td>{{ curso.id }}</td>
+          <td>{{ curso.nome }}</td>
+          <td>
+            <span class="float-right">
+              <button
+                class="btn btn-outline-warning mb-1 btn-sm"
+                (click)="onEdit(curso.id)"
+              >
+                Atualizar
+              </button>
+
+              <button
+                class="btn btn-outline-danger mb-1 btn-sm"
+                (click)="onDelete(curso)"
+              >
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Componente de Carregamento -->
+    <ng-template #loading>
+      <button class="btn btn-primary" type="button" disabled>
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Carregando cursos...
+      </button>
+    </ng-template>
+
+
+    <!-- Componente de erro - Usado antes de criar o Service de Alerta com o Modal -->
+    <!-- <ng-template #loadingErro>
+                <div *ngIf="error$ | async; else loading">
+                    Erro ao retornar os dados do banco de dados. Tente novamente.
+                </div>
+            </ng-template> -->
+  </div>
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que você deseja excluir o curso?</p>
+    <button type="button" class="btn btn-primary" (click)="onConfirmDelete()">
+      Sim
+    </button>
+    <button type="button" class="btn btn-danger" (click)="onDeclineDelete()">
+      Não
+    </button>
+  </div>
+</ng-template>

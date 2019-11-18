@@ -1,0 +1,10 @@
+/* Para a estrutura geral */
+.divPrincipal{
+  margin-top: 15px;
+  border: 2px dotted black;
+}
+
+/* Retorno do Banco */
+.divInfoAluno{
+  padding: 1.25rem;
+}
